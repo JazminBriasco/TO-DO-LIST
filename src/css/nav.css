@@ -1,0 +1,22 @@
+.back-nav{
+    width: 100%;
+    /*    background-color: rgba(0, 0, 0, 0.3); el 0.3 indica la transparencia.*/
+    background-color: rgba(0, 0, 0, 0.7);
+    margin: 0 auto;
+}
+
+.ul-nav{
+    list-style: none;
+    display: inline-flex;
+    width: 90%;
+    align-items: center;
+    justify-content: center;
+}
+
+.li-nav{
+    /*margin: top right bottom left*/
+    margin: 0 2% 0 2%;
+    color: rgb(255, 255, 255);
+    font-size: 20px;
+    text-decoration: none;
+}
