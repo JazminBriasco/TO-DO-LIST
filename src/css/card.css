@@ -1,21 +1,126 @@
+.container-card{
+    display: flex;
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 1px;
+}
+
 .body-card{
     background-color:rgb(255, 255, 255);
-    width: 20%;
-    height: 100%;
     margin: 0 auto;
-    margin-top: 3%;
-    padding-bottom: 3%;
     
+    width: 350px;
+    min-width: 350px;
+    margin-top: 50px;
+    padding-bottom: 3%;
+    border-radius: 15px 15px 15px 15px;
+    -moz-border-radius: 15px 15px 15px 15px;
+    -webkit-border-radius: 15px 15px 15px 15px;
 }
 
 .title-card{
-    background-color:teal;
     text-align: center;
-    font-size: 40px;
+    font-size: 40px;    
+}
+
+.border-card{
+    width: 80%;
+    margin-top: -5%;
+    margin-bottom: 5%; 
+}
+
+.no-style-input{
+    border: 0;
+    background-color: rgb(206, 206, 206);
+    outline: none;
+    font-size: 20px;
+    width: 100%;
+}
+
+.btn-card{
+    margin-left: 90%;
+    border: 1px solid black;
+    border-radius: 8px 8px 8px 8px;
+    -moz-border-radius: 8px 8px 8px 8px;
+    -webkit-border-radius: 8px 8px 8px 8px;
+}
+
+.btn-card:hover{
+    background-color: rgb(116, 116, 116);
+}
+
+.btn-card:focus{
+    background-color: rgb(168, 168, 168);
 }
 
 .content-card{
-    background-color: tomato;
+    background-color: rgb(206, 206, 206);
     font-size: 20px;
-    margin: 0 2% 20% 2%;
+    margin: 4% 4% 1% 4%;
+    padding: 4%;
+    border-radius: 15px 15px 15px 15px;
+    -moz-border-radius: 15px 15px 15px 15px;
+    -webkit-border-radius: 15px 15px 15px 15px;
+}
+
+
+@media screen and (max-width:690px) {
+    .container-card{
+        display: block;
+    }
+    
+    .title-card{
+        padding: 10px 0 10px 0;
+        font-size: 30px;
+    }
+
+    .body-card{
+        width: 300px;
+        min-width: 250px;
+        margin: 0 auto;
+    }
+
+    .btn-card{
+        margin-left: 80%;
+    }
+}
+
+@media screen and (min-width: 691px) and (max-width:1199px) {
+    .container-card{
+        display: block;
+    }
+    
+    .title-card{
+        font-size: 30px;
+    }
+
+    .title-card{
+        padding: 20px 0 20px 0;
+    }
+
+    .body-card{
+        width: 550px;
+        min-width: 250px;
+        margin: 0 auto;
+    }
+}
+
+
+@media screen and (min-width: 1200px) and (max-width:1670px) {
+    .container-card{
+        width: 90%;
+        margin: 0 auto;
+        position: relative;
+    }
+    
+    .body-card{
+        width: 250px;
+        min-width: 250px;
+        margin: 0 auto;
+        margin-top: 50px;
+    }
+
+    .btn-card{
+        margin-left: 80%;
+    }
 }
