@@ -1,26 +1,73 @@
 import React, {useState} from 'react';
+import Error from './Error';
+import Spinner from './Spinner';
 import '../css/card.css';
 
     
 const Card = ({titulo}) => {
     
+    //Save the first content (What user is typing) in content variable.
+    const [content, saveContent] = useState('');  //Variable to save, function to call.
 
-    const[content, saveContent] = useState('');  //Variable a guardar, función a llamar.
+    //Error message
+    const [error, generateError] = useState(false);
+
+    //Save the confirm content (After 'Save' button)
+    const [confirm, confirmContent] = useState('');
+
+    //Call Spinner
+    const [load, loading] = useState(false); 
+
+
+
+    //When the data in the form is confirmed
+    const sendContent = e =>{
+        e.preventDefault(); 
+        
+        //Validations
+
+        if(content !== ''){
+            //Spinner active
+            loading(true);
+            
+            //Error not active
+            generateError(false);
+
+            //Simulate loading
+            setTimeout(() => {
+                //After Save button, this is de data for the other div
+                confirmContent(content);
+                //Stop loading
+                loading(false);
+            }, 1500);
+        
+        }else{
+            console.log('Wrong information');
+            generateError(true);
+        }
+    }
+
 
     return(
-
             <div className="body-card">
                 <h2 className="title-card">{titulo}</h2>
                 <hr className="border-card"></hr>
                 <div className="content-card">
-                    <form>
+                    <form onSubmit = {sendContent}>
                         <input className="no-style-input" type="text" placeholder="Write me" onChange={ e => saveContent(e.target.value)}></input>
-                        <button className="btn-card">OK</button>
+                        <button className="btn-card">Save</button>
                     </form>
                 </div>
                 <div className="content-card">
-                    {content}
+                    {(confirm) ? <p>{confirm} </p>: null}
+                    <form>
+                        <button className="btn-card">REMOVE</button>
+                        <button className="btn-card">DOING</button>
+                    </form>
                 </div>
+                {/* Conditional components */}
+                { (error) ? <Error/> : null  } 
+                { (load) ? <Spinner/> : null  } 
             </div>
         
     );

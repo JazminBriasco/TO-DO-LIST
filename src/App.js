@@ -26,9 +26,11 @@ function App() {
           titulo = 'Card 4'
           />
         </div>
-
+        
+        <br></br><br></br>
+        
         <hr></hr>
-        <h2 className="text-control">DOING</h2>
+        {/*  <h2 className="text-control">DOING</h2>
         <div className="container-card">
           
           <Card
@@ -63,7 +65,7 @@ function App() {
           titulo = 'Card 4'
           />
         </div>
-        <hr></hr>
+        <hr></hr> */}
     </>
     );
 }

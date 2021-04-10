@@ -38,7 +38,7 @@
 }
 
 .btn-card{
-    margin-left: 90%;
+    margin-left: 80%;
     border: 1px solid black;
     border-radius: 8px 8px 8px 8px;
     -moz-border-radius: 8px 8px 8px 8px;
@@ -52,6 +52,8 @@
 .btn-card:focus{
     background-color: rgb(168, 168, 168);
 }
+
+
 
 .content-card{
     background-color: rgb(206, 206, 206);
