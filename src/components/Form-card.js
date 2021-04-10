@@ -5,8 +5,8 @@ import '../css/card.css';
 
 
     
-const FormCard = ({titulo}) => {
-
+const FormCard = () => {
+    
 /**States */
     //Save the first content (What user is typing) in content variable.
     const [content, saveContent] = useState(null);  //Variable to save, function to call.
@@ -57,7 +57,7 @@ const FormCard = ({titulo}) => {
     return(
         <>
             <div className="body-card">
-                <h2 className="title-card">{titulo}</h2>
+                <h2 className="title-card">{'New task'}</h2>
                 <hr className="border-card"></hr>
                 <div className="content-card">
                     <form onSubmit = {sendContent} className="form-save">
@@ -73,7 +73,7 @@ const FormCard = ({titulo}) => {
                     </form>
                 </div>
                 {/* Conditional components */}
-                { (error) ? <Error/> : null  } 
+                { (error) ? <Error/> : null  }  
                 { (load) ? <Spinner/> : null  } 
             </div>
 

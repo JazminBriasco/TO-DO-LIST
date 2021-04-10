@@ -7,6 +7,14 @@
     text-align: center;
 }
 
+.icon-nav{
+    width: 40px;
+    height: 40px;
+    background-size: 97%;
+    background-image: url('../img/idea.png');
+    margin-left: 0;
+}
+
 .ul-nav{
     list-style: none;
     display: inline-flex;
