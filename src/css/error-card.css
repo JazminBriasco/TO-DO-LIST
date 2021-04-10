@@ -1,0 +1,10 @@
+.error-card{
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 10%;
+    text-align: center;
+    color: rgb(255, 0, 0);
+    text-transform: uppercase;
+    font-weight: bolder;
+    font-size: 30px;
+}

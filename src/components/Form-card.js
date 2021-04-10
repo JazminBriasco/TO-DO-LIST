@@ -3,30 +3,31 @@ import Error from './Error';
 import Spinner from './Spinner';
 import '../css/card.css';
 
+
     
-const Card = ({titulo}) => {
-    
+const FormCard = ({titulo}) => {
+
+/**States */
     //Save the first content (What user is typing) in content variable.
-    const [content, saveContent] = useState('');  //Variable to save, function to call.
+    const [content, saveContent] = useState(null);  //Variable to save, function to call.
 
     //Error message
     const [error, generateError] = useState(false);
 
     //Save the confirm content (After 'Save' button)
-    const [confirm, confirmContent] = useState('');
+    const [confirm, confirmContent] = useState(null);
 
     //Call Spinner
     const [load, loading] = useState(false); 
 
 
-
+/**Handles */    
     //When the data in the form is confirmed
     const sendContent = e =>{
         e.preventDefault(); 
-        
-        //Validations
 
-        if(content !== ''){
+        //Validations
+        if(content !== null){
             //Spinner active
             loading(true);
             
@@ -35,44 +36,51 @@ const Card = ({titulo}) => {
 
             //Simulate loading
             setTimeout(() => {
-                //After Save button, this is de data for the other div
-                confirmContent(content);
-                //Stop loading
-                loading(false);
+
+            //After Save button, this is de data for the other div
+            confirmContent(content);
+
+            //Stop loading
+            loading(false);
+
+            //Clean the input
+            document.getElementById("card-input").value = '';
+            saveContent(null);
             }, 1500);
-        
+
         }else{
             console.log('Wrong information');
             generateError(true);
         }
     }
-
-
+    
     return(
+        <>
             <div className="body-card">
                 <h2 className="title-card">{titulo}</h2>
                 <hr className="border-card"></hr>
                 <div className="content-card">
-                    <form onSubmit = {sendContent}>
-                        <input className="no-style-input" type="text" placeholder="Write me" onChange={ e => saveContent(e.target.value)}></input>
+                    <form onSubmit = {sendContent} className="form-save">
+                        <input className="no-style-input" id="card-input" type="text" placeholder="Write me" onChange={ e => saveContent(e.target.value)}></input>
                         <button className="btn-card">Save</button>
                     </form>
                 </div>
-                <div className="content-card">
+                <div className="content-card ">
                     {(confirm) ? <p>{confirm} </p>: null}
-                    <form>
-                        <button className="btn-card">REMOVE</button>
-                        <button className="btn-card">DOING</button>
+                    <form className="form-save">
+         {/*                <button className="btn-card">REMOVE</button> */}
+                        <button className="btn-card">OK !</button>
                     </form>
                 </div>
                 {/* Conditional components */}
                 { (error) ? <Error/> : null  } 
                 { (load) ? <Spinner/> : null  } 
             </div>
-        
+
+        </>
     );
 }
-export default Card;
+export default FormCard;
 
 
 

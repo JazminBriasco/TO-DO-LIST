@@ -3,9 +3,11 @@
 } */
 
 .text-control{
-    color:rgb(255, 0, 0);
-    font-size: 50px;
+    padding: 1%;
+    color:rgb(0, 0, 0);
+    font-size: 45px;
     text-align: center;
+    text-decoration: underline;
 }
 
 .mt-5p{

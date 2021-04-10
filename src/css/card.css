@@ -2,17 +2,15 @@
     display: flex;
     width: 90%;
     margin: 0 auto;
-    margin-top: 1px;
+    
 }
 
 .body-card{
     background-color:rgb(255, 255, 255);
     margin: 0 auto;
-    
     width: 350px;
     min-width: 350px;
-    margin-top: 50px;
-    padding-bottom: 3%;
+    padding-bottom: 2%;
     border-radius: 15px 15px 15px 15px;
     -moz-border-radius: 15px 15px 15px 15px;
     -webkit-border-radius: 15px 15px 15px 15px;
@@ -34,11 +32,17 @@
     background-color: rgb(206, 206, 206);
     outline: none;
     font-size: 20px;
+    width: 90%;
+}
+
+.form-save{
     width: 100%;
 }
 
 .btn-card{
-    margin-left: 80%;
+    margin-left: 75%; 
+    width: 25%;
+    
     border: 1px solid black;
     border-radius: 8px 8px 8px 8px;
     -moz-border-radius: 8px 8px 8px 8px;
@@ -52,7 +56,6 @@
 .btn-card:focus{
     background-color: rgb(168, 168, 168);
 }
-
 
 
 .content-card{
@@ -85,6 +88,11 @@
     .btn-card{
         margin-left: 80%;
     }
+
+    .btn-card{
+        margin-left: 65%; 
+        width: 35%;
+    }
 }
 
 @media screen and (min-width: 691px) and (max-width:1199px) {
@@ -105,6 +113,7 @@
         min-width: 250px;
         margin: 0 auto;
     }
+
 }
 
 
@@ -124,5 +133,10 @@
 
     .btn-card{
         margin-left: 80%;
+    }
+    
+    .btn-card{
+        margin-left: 65%; 
+        width: 35%;
     }
 }
