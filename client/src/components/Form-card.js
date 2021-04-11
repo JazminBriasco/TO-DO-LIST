@@ -53,10 +53,10 @@ const FormCard = () => {
             generateError(true);
         }
     }
-    
+
     return(
         <>
-            <div className="body-card">
+            <div className="body-card" id="card-task-color">
                 <h2 className="title-card">{'New task'}</h2>
                 <hr className="border-card"></hr>
                 <div className="content-card">
@@ -72,6 +72,7 @@ const FormCard = () => {
                         <button className="btn-card">OK !</button>
                     </form>
                 </div>
+                <input type="color" className="card-color-picker" onChange={ e => document.getElementById("card-task-color").style.backgroundColor = e.target.value}></input>
                 {/* Conditional components */}
                 { (error) ? <Error/> : null  }  
                 { (load) ? <Spinner/> : null  } 

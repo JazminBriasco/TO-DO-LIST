@@ -42,7 +42,6 @@
 .btn-card{
     margin-left: 75%; 
     width: 25%;
-    
     border: 1px solid black;
     border-radius: 8px 8px 8px 8px;
     -moz-border-radius: 8px 8px 8px 8px;
@@ -68,6 +67,12 @@
     -webkit-border-radius: 15px 15px 15px 15px;
 }
 
+.card-color-picker{
+    margin: 5% 0 0 80%;
+    border-radius: 10px 10px 10px 10px;
+    -moz-border-radius: 10px 10px 10px 10px;
+    -webkit-border-radius: 10px 10px 10px 10px;
+}
 
 @media screen and (max-width:690px) {
     .container-card{

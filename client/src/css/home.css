@@ -6,11 +6,35 @@
     -moz-border-radius: 15px 15px 15px 15px;
     -webkit-border-radius: 15px 15px 15px 15px;
 }
+
 .new-button{
     margin-left: .5%;
     margin-top: -1%;
     position: fixed;
     border: none;
+}
+
+.bg-button {
+    
+    margin-top: -.5%;
+    margin-left: 93%;
+    background-color: transparent;
+    position: fixed;
+    border: none;
+    font-size: 20px;
+}
+
+
+
+
+
+
+
+
+
+
+.mt-5p{
+    margin-top: 5%;
 }
 
 .new-link{
@@ -26,7 +50,7 @@
 }
 
 .text-control{
-    padding: 1%;
+    padding: 4% 0 3% 0;
     color:rgb(0, 0, 0);
     font-size: 45px;
     text-align: center;
