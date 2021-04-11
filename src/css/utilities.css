@@ -1,31 +1,6 @@
-.text-control{
-    padding: 1%;
-    color:rgb(0, 0, 0);
-    font-size: 45px;
-    text-align: center;
-    text-decoration: underline;
-}
 
 .mt-5p{
     margin-top: 5%;
 }
 
 /*New Button From App.js*/
-.new-button{
-    margin-left: .5%;
-    margin-top: -1%;
-    position: fixed;
-    border: none;
-}
-
-.new-link{
-    background-color: transparent;
-    font-size: 25px;
-    color:black;
-    text-decoration: none;
-}
-
-.new-link:hover{
-    font-size: 30px;
-    background-color: rgba(0, 0, 0, 0.2);
-}
