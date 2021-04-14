@@ -10,31 +10,27 @@ import './css/utilities.css';
     
 
 function App() {
-
+  
+  const [bg, setBg] = useState(null);
 
   const handleChange = (e) =>{
     if(e.target.value === "1"){
-      document.body.style.backgroundImage = "url('https://cdn.pixabay.com/photo/2021/04/01/20/49/trees-6143244_960_720.jpg')";
+      setBg(document.body.style.backgroundImage = "url('https://cdn.pixabay.com/photo/2021/04/01/20/49/trees-6143244_960_720.jpg')");
     }   else if(e.target.value === "2"){
       document.body.style.backgroundImage = "url('https://cdn.pixabay.com/photo/2020/12/21/08/36/dog-5849152_960_720.jpg')";
     }   else if(e.target.value === "3"){
-    document.body.style.backgroundImage = "url('https://cdn.pixabay.com/photo/2015/10/09/00/55/lotus-978659_960_720.jpg')";
+      setBg( document.body.style.backgroundImage = "url('https://cdn.pixabay.com/photo/2015/10/09/00/55/lotus-978659_960_720.jpg')");
     }    else if(e.target.value === "4"){
-    document.body.style.backgroundImage = "url('https://cdn.pixabay.com/photo/2014/03/30/09/44/cherry-blossoms-301253_960_720.jpg')";
+      setBg( document.body.style.backgroundImage = "url('https://cdn.pixabay.com/photo/2014/03/30/09/44/cherry-blossoms-301253_960_720.jpg')");
     }    else if(e.target.value === "5"){
-    document.body.style.backgroundImage = "url('https://cdn.pixabay.com/photo/2020/05/20/07/52/gallo-5195311_960_720.jpg')";
-    }
+      setBg(document.body.style.backgroundImage = "url('https://cdn.pixabay.com/photo/2020/05/20/07/52/gallo-5195311_960_720.jpg')");
     }
 
-/*   
-    const submitTask = () =>{
-      Axios.post("http://localhost:3010/api/insert", {
-          content: confirm
-      }).then(()=>{
-          alert('Success!');
-      });
+    /* localStorage.setItem('bg', bg); */
+    
   }
-   */
+  document.body.style.backgroundImage = bg;
+  
 
   return (
     <>  

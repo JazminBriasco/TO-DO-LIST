@@ -19,6 +19,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 console.log('hi');
 
+/**POST */
 app.post("/api/insert", (req, res) =>{
     console.log('insert server');
     const title = req.body.title;
@@ -33,6 +34,8 @@ app.post("/api/insert", (req, res) =>{
     });
 });
 
+
+/**GET */
 app.get("/api/getAll", (req, res) =>{
     console.log('getAll server');
     const sqlRead = "SELECT * FROM card;"
@@ -63,7 +66,7 @@ app.get("/api/getDoing", (req, res) =>{
     });
 });
 
-app.get("/api/Done", (req, res) =>{
+app.get("/api/getDone", (req, res) =>{
     console.log('getAll server');
     const sqlRead = "SELECT * FROM card WHERE state = 'done';"
     db.query(sqlRead, (err, result) =>{
@@ -72,6 +75,42 @@ app.get("/api/Done", (req, res) =>{
         res.send(result);
     });
 });
+
+/**UPDATE */
+app.put("/api/updateTitle/", (req, res) =>{
+    const id_card = req.body.id_card;
+    const title = req.body.title;
+    console.log("SON:" + id_card, title);
+    const sqlUpdateTitle = "UPDATE card SET title = '?' WHERE id_card = ?";
+    db.query(sqlUpdateTitle, [id_card, title], (err, result) =>{
+        err ? console.log(err) : console.log(result); 
+        res.send(result);
+    });
+});
+
+app.put("/api/updateContent/", (req, res) =>{
+    const id_card = req.body.id_card;
+    const content = req.body.content;
+    const sqlUpdateContent = "UPDATE card SET content = '?' WHERE id_card = ?";
+    db.query(sqlUpdateContent, [id_card, content], (err, result) =>{
+        err ? console.log(err) : console.log(result); 
+        res.send(result);
+    });
+});
+
+
+/**DELETE */
+app.delete("/api/delete/:id_card", (req, res) =>{
+    const id_card = req.params.id_card;
+    const sqlDelete = `DELETE FROM card WHERE id_card = '${id_card}'`;
+    db.query(sqlDelete, (err, result) =>{
+        err ? console.log(err) : console.log(result); 
+        res.send(result);
+    });
+});
+
+
+
 
 app.listen(3010, () =>{
     console.log('Running on port 3010');
