@@ -7,6 +7,7 @@ import Home from './components/Home';
 import './App.css';
 import './css/utilities.css';
 
+    
 
 function App() {
 
@@ -24,6 +25,16 @@ function App() {
     document.body.style.backgroundImage = "url('https://cdn.pixabay.com/photo/2020/05/20/07/52/gallo-5195311_960_720.jpg')";
     }
     }
+
+/*   
+    const submitTask = () =>{
+      Axios.post("http://localhost:3010/api/insert", {
+          content: confirm
+      }).then(()=>{
+          alert('Success!');
+      });
+  }
+   */
 
   return (
     <>  
@@ -46,23 +57,23 @@ function App() {
               </select>
             </form>
           </div>
-        <h2 className="text-control mt-5p">Welcome!</h2>  {/* New / To do / Doing / Done */}
+        <h2 className="text-control mt-5p" id="main-title">Welcome!</h2>  {/* New / To do / Doing / Done */}
         <div className="container-card">
           <BrowserRouter>
             <Switch>
             <Route path='/home' component={Home} />
               <Route path='/formcard' component={FormCard} />
-              <Route path='/all' 
+              <Route path='/getAll' 
                 component={() => (
                   <Card
-                    title={'All'}
+                    mainTitle={'All'}
                     />
                   )}
                   />
               <Route path='/todo' 
                 component={() => (
                   <Card
-                    title={'To do'}  
+                    mainTitle={'To do'}  
                     upTo="Doing"
                     />
                   )}
@@ -70,7 +81,7 @@ function App() {
               <Route path='/doing' 
                 component={() => (
                   <Card
-                    title={'Doing'}
+                    mainTitle={'Doing'}
                     upTo="Done"
                     />
                   )}
@@ -78,7 +89,7 @@ function App() {
               <Route path='/done' 
                 component={() => (
                   <Card
-                    title={'Done'}  />
+                    mainTitle={'Done'}  />
                   )}
                   />
 
