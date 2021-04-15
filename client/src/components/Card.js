@@ -32,6 +32,13 @@ const Card = ({mainTitle, upTo}) => {
         Axios.delete(`http://localhost:3010/api/delete/${id_card}`);
     };
 
+
+    const changeState = (id_card, status) =>{
+        Axios.put("http://localhost:3010/api/upTo", {
+            id_card: id_card,
+            state: status
+    })};
+
     const updateTitle = (id_card, title) =>{
         Axios.put("http://localhost:3010/api/updateTitle", {
             id_card: id_card,
@@ -70,10 +77,6 @@ const Card = ({mainTitle, upTo}) => {
     if(colorCard){   colorCard.style.backgroundColor = color } 
     if(main){   main.innerHTML = mainTitle } 
 
-    const changeState = (up) =>{
-        console.log(up);
-
-    }
 
 
     return(
@@ -90,7 +93,7 @@ const Card = ({mainTitle, upTo}) => {
                     <div className="content-card" >
                         <form className="form-save" >
                             <p>{value.content}</p>
-                            {upTo ? <button className="btn-card" id="btn-to-doing" onClick={changeState(upTo)}>{upTo}</button> : null}
+                            {upTo ? <button className="btn-card" id="btn-to-doing" onClick={() =>{changeState(value.id_card, upTo)}}>{upTo}</button> : null}
                             <button className="btn-card" onClick={() =>{deleteCard(value.id_card)}}>Remove</button>
                             
                             <button className="btn-card" onClick={() =>{updateCard(value.id_card)}}>Update</button>

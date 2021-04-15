@@ -1,5 +1,5 @@
 .container-card{
-    display: flex;
+    /* display: flex; */
     width: 90%;
     margin: 0 auto;
     
@@ -8,9 +8,9 @@
 .body-card{
     background-color:rgb(255, 255, 255);
     margin: 0 auto;
-    width: 350px;
-    min-width: 350px;
-    padding-bottom: 2%;
+    width: 450px;
+    min-width: 450px;
+    padding-bottom: 3%;
     border-radius: 15px 15px 15px 15px;
     -moz-border-radius: 15px 15px 15px 15px;
     -webkit-border-radius: 15px 15px 15px 15px;
@@ -19,11 +19,11 @@
 .title-card{
     text-align: center;
     font-size: 40px;    
+    padding-top: 10%;
 }
 
 .border-card{
     width: 80%;
-    margin-top: -5%;
     margin-bottom: 5%; 
 }
 

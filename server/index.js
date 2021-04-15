@@ -13,9 +13,9 @@ const cors = require('cors');
 
 const db = mysql.createPool({
     host: process.env.DB_HOST ,
-    user: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    database: process.env.DB_NAME
+    user: process.env.DB_USER || "root",
+    password: process.env.DB_PASSWORD || "",
+    database: process.env.DB_NAME || "tasks"
 });
 
 app.use(cors());
@@ -114,6 +114,19 @@ app.delete("/api/delete/:id_card", (req, res) =>{
     });
 });
 
+/**CHANGE STATE */
+app.put("/api/upTo", (req, res) =>{
+    const state = req.body.state;
+    const id_card = req.body.id_card;
+    
+    /* const sqlUp = "UPDATE card SET status = '?' WHERE id_card = ?"; */
+    const sqlUp = `UPDATE card SET state = '${state.toLowerCase()}' WHERE id_card = ${id_card}`;
+    console.log(sqlUp);
+    db.query(sqlUp, [state, id_card], (err, result) =>{
+        err ? console.log(err) : console.log(result); 
+        res.send(result);
+    });
+});
 
 
 
