@@ -1,16 +1,21 @@
 //Require all dependecies i need.
 
+require('dotenv').config();
+
 const express = require('express');
+
 const app = express();
 const mysql = require('mysql');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 
+
+
 const db = mysql.createPool({
-    host: 'localhost',
-    user: 'root',
-    password: 'panchu338563',
-    database: 'tasks'
+    host: process.env.DB_HOST ,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME
 });
 
 app.use(cors());
