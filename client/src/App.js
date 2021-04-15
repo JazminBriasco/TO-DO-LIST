@@ -58,6 +58,7 @@ function App() {
           <BrowserRouter>
             <Switch>
             <Route path='/home' component={Home} />
+            <Route exact path='/' component={Home} />
               <Route path='/formcard' component={FormCard} />
               <Route path='/getAll' 
                 component={() => (
