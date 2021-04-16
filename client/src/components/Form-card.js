@@ -33,7 +33,8 @@ const FormCard = () => {
         e.preventDefault(); 
 
         //Validations
-        if(content !== null){
+        if(content !== null && title !== null){
+            console.log(content , title);
             //Spinner active
             loading(true);
             
@@ -44,7 +45,9 @@ const FormCard = () => {
             setTimeout(() => {
 
             //After Save button, this is de data for the other div
-            confirmContent(content);
+            /* confirmContent(content); */
+
+                submitTask();
 
             //Stop loading
             loading(false);
@@ -57,6 +60,8 @@ const FormCard = () => {
             saveContent(null);
             }, 1500);
 
+            
+
         }else{
             console.log('Wrong information');
             generateError(true);
@@ -64,11 +69,12 @@ const FormCard = () => {
     }
 
     const submitTask = () =>{
+        console.log("ESTOY EN TASK");
         console.log('title client: ' + title);
         console.log('content client: ' + content);
         console.log('Color client: ' + color);
         Axios.post("http://localhost:3010/api/insert", {
-            content: confirm,
+            content: content,
             title: title, 
             color: color
         }).then(()=>{
@@ -90,18 +96,10 @@ const FormCard = () => {
                 <div className="content-card">
                     <form onSubmit = {sendContent} className="form-save">
                         <input className="no-style-input" id="card-input-title" type="text" placeholder="Title" onChange={ e => saveTitle(e.target.value)}></input> 
-                        <input className="no-style-input" id="card-input-content" type="text" placeholder="Write me" onChange={ e => saveContent(e.target.value)}></input>              
-                        <button className="btn-card">Save</button>
+                        <input className="no-style-input" id="card-input-content" type="text" placeholder="Write me!" onChange={ e => saveContent(e.target.value)}></input>              
+                        <button className="btn-card">OK!</button>
                     </form>
 
-                </div>
-                <div className="content-card ">
-                    {(confirm) ? <p>{confirm} </p>: null}
-                    {(title) ? <p>{title} </p>: null}
-                    <form className="form-save">
-         {/*                <button className="btn-card">REMOVE</button> */}
-                        <button onClick={submitTask} className="btn-card">OK !</button>
-                    </form>
                 </div>
                 <input type="color" className="card-color-picker" onChange={changeColor}></input>
                 {/* Conditional components */}

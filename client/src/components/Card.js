@@ -86,10 +86,6 @@ const Card = ({mainTitle, upTo}) => {
         });
     };
 
-
-    
-
-
     return(
             <>
             <h2 id="por"></h2>
@@ -100,23 +96,22 @@ const Card = ({mainTitle, upTo}) => {
                 
                 return                    <div className="body-card" id="color-card"  >
                     <form>
-                            <input type="text" className="title-card" id="placeholder-input-title" placeholder = {value.title}>
-                            </input>
-                            <button className="btn-card" id="btn-update" onClick={(e) =>{updateTitle(value.id_card)}}>Update</button>
-                        </form>
+                        <input type="text" className="title-card" id="placeholder-input-title" placeholder = {value.title}>
+                        </input>
+                        <button className="btn-card" id="btn-update" onClick={(e) =>{updateTitle(value.id_card)}}>Change</button>
+                    </form>
 
                     <hr className="border-card" ></hr>
                     <div className="content-card" >
-                 
                         <form>
                             <input type="text" id="placeholder-input" placeholder = {value.content}>
                             </input>
-                            <button className="btn-card" onClick={(e) =>{updateCard(value.id_card)}}>Update</button>
+                            <button className="btn-card" onClick={(e) =>{updateCard(value.id_card)}}>Change</button>
                         </form>
+
                         <form className="form-save" >
                             {upTo ? <button className="btn-card" id="btn-to-doing" onClick={() =>{changeState(value.id_card, upTo)}}>{upTo}</button> : null}
                             <button className="btn-card" onClick={() =>{deleteCard(value.id_card)}}>Remove</button>
-                                
                         </form>
                     </div>
                 </div>
