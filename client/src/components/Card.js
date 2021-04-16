@@ -1,17 +1,18 @@
 import React, {useState, useEffect } from 'react';
 import '../css/card.css';
-import FormCard from '../components/Form-card.js';
-
 import Axios from 'axios';
 
 const Card = ({mainTitle, upTo}) => {
 
+/**States */
+    /**State that saves the response of the call to the database */
     const [taskList, saveTaskList] = useState([]);
-    const [color, saveColor] = useState(null);
-    /* 
-    const placeholder = document.getElementById('placeholder-input');
-     */
 
+    /**This will save and show the color of each card */
+    const [color, saveColor] = useState(null);
+
+
+/**Calls */
     const getAll = e =>{
         Axios.get("http://localhost:3010/api/getAll").then((response)=>{
             saveTaskList(response.data);
@@ -42,9 +43,28 @@ const Card = ({mainTitle, upTo}) => {
             state: status
     })};
 
-  
-  
+    const updateCard = ( id_card) =>{
+        if(document.getElementById('placeholder-input').value){
+            Axios.put("http://localhost:3010/api/updateContent", {
+                id_card: id_card,
+                content: document.getElementById('placeholder-input').value
+            }); 
+        window.location.reload(); 
+        }
+    };
 
+    const updateTitle = (id_card) =>{
+        if(document.getElementById('placeholder-input-title').value){
+        Axios.put("http://localhost:3010/api/updateTitle", {
+            id_card: id_card,
+            title: document.getElementById('placeholder-input-title').value
+        });
+        window.location.reload(); 
+        }
+    };
+
+
+/**Use Effect, the first function that is called */
     useEffect(()=>{
         if(mainTitle === 'All'){
             getAll();
@@ -64,6 +84,8 @@ const Card = ({mainTitle, upTo}) => {
         }
     }, []);
 
+
+/**Constants */
     const main = document.querySelector('#main-title');
     const colorCard = document.querySelector('#color-card');
 
@@ -71,20 +93,6 @@ const Card = ({mainTitle, upTo}) => {
     if(colorCard){   colorCard.style.backgroundColor = color } 
     if(main){   main.innerHTML = mainTitle } 
 
-
-    const updateCard = ( id_card) =>{
-        Axios.put("http://localhost:3010/api/updateContent", {
-            id_card: id_card,
-            content: document.getElementById('placeholder-input').value
-        }); 
-    };
-
-    const updateTitle = (id_card) =>{
-        Axios.put("http://localhost:3010/api/updateTitle", {
-            id_card: id_card,
-            title: document.getElementById('placeholder-input-title').value
-        });
-    };
 
     return(
             <>
@@ -96,7 +104,7 @@ const Card = ({mainTitle, upTo}) => {
                 
                 return                    <div className="body-card" id="color-card"  >
                     <form>
-                        <input type="text" className="title-card" id="placeholder-input-title" placeholder = {value.title}>
+                        <input required type="text" className="title-card" id="placeholder-input-title" placeholder = {value.title}>
                         </input>
                         <button className="btn-card" id="btn-update" onClick={(e) =>{updateTitle(value.id_card)}}>Change</button>
                     </form>
@@ -104,7 +112,7 @@ const Card = ({mainTitle, upTo}) => {
                     <hr className="border-card" ></hr>
                     <div className="content-card" >
                         <form>
-                            <input type="text" id="placeholder-input" placeholder = {value.content}>
+                            <input required type="text" id="placeholder-input" placeholder = {value.content}>
                             </input>
                             <button className="btn-card" onClick={(e) =>{updateCard(value.id_card)}}>Change</button>
                         </form>

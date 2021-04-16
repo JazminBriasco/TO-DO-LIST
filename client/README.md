@@ -72,8 +72,6 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###
 
-### Trello
-https://trello.com/b/8YvmnJVL/to-do-list
 
 ###
 Start Frontend:     npm start

@@ -1,0 +1,13 @@
+TO FIX
+- How to save the color of the cards.
+- How to save the background on the session (localStorage?) While the user is in the session.
+- The change of the title and the content, the refresh is working wierd in the front.
+- .env
+- Favicon is working random.
+
+TO DO BETTER
+- MVC model
+- the css is repeating so much information.
+
+EVERYTHING
+- Server constants
