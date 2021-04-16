@@ -14,7 +14,7 @@ const cors = require('cors');
 const db = mysql.createPool({
     host: process.env.DB_HOST ,
     user: process.env.DB_USER || "root",
-    password: process.env.DB_PASSWORD || "",
+    password: process.env.DB_PASSWORD,
     database: process.env.DB_NAME || "tasks"
 });
 
@@ -82,22 +82,25 @@ app.get("/api/getDone", (req, res) =>{
 });
 
 /**UPDATE */
-app.put("/api/updateTitle/", (req, res) =>{
+app.put("/api/updateContent/", (req, res) =>{
     const id_card = req.body.id_card;
-    const title = req.body.title;
-    console.log("SON:" + id_card, title);
-    const sqlUpdateTitle = "UPDATE card SET title = '?' WHERE id_card = ?";
-    db.query(sqlUpdateTitle, [id_card, title], (err, result) =>{
+    const content = req.body.content;
+    console.log("ID_CARD : " + id_card);
+    console.log("Content : " + content);
+    const sqlUpdateContent = "UPDATE card SET content = ? WHERE id_card = ?";
+    db.query(sqlUpdateContent, [content, id_card], (err, result) =>{
         err ? console.log(err) : console.log(result); 
         res.send(result);
     });
 });
 
-app.put("/api/updateContent/", (req, res) =>{
+
+app.put("/api/updateTitle/", (req, res) =>{
     const id_card = req.body.id_card;
-    const content = req.body.content;
-    const sqlUpdateContent = "UPDATE card SET content = '?' WHERE id_card = ?";
-    db.query(sqlUpdateContent, [id_card, content], (err, result) =>{
+    const title = req.body.title;
+    console.log("SON:" + id_card, title);
+    const sqlUpdateTitle = "UPDATE card SET title = ? WHERE id_card = ?";
+    db.query(sqlUpdateTitle, [title, id_card], (err, result) =>{
         err ? console.log(err) : console.log(result); 
         res.send(result);
     });

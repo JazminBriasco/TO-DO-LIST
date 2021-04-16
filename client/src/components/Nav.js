@@ -1,6 +1,6 @@
 import React from 'react';
 import '../css/nav.css';
-import Axios from 'axios';
+
 
 function Nav(){
     

@@ -1,5 +1,6 @@
 import React, {useState, useEffect } from 'react';
 import '../css/card.css';
+import FormCard from '../components/Form-card.js';
 
 import Axios from 'axios';
 
@@ -7,7 +8,10 @@ const Card = ({mainTitle, upTo}) => {
 
     const [taskList, saveTaskList] = useState([]);
     const [color, saveColor] = useState(null);
-    
+    /* 
+    const placeholder = document.getElementById('placeholder-input');
+     */
+
     const getAll = e =>{
         Axios.get("http://localhost:3010/api/getAll").then((response)=>{
             saveTaskList(response.data);
@@ -32,24 +36,14 @@ const Card = ({mainTitle, upTo}) => {
         Axios.delete(`http://localhost:3010/api/delete/${id_card}`);
     };
 
-
     const changeState = (id_card, status) =>{
         Axios.put("http://localhost:3010/api/upTo", {
             id_card: id_card,
             state: status
     })};
 
-    const updateTitle = (id_card, title) =>{
-        Axios.put("http://localhost:3010/api/updateTitle", {
-            id_card: id_card,
-            title: title
-        });
-    };
-
-    const updateCard = (id_card, content) =>{
-        Axios.put(`http://localhost:3010/api/updateTitle/${id_card}`);
-    };
-
+  
+  
 
     useEffect(()=>{
         if(mainTitle === 'All'){
@@ -78,25 +72,51 @@ const Card = ({mainTitle, upTo}) => {
     if(main){   main.innerHTML = mainTitle } 
 
 
+    const updateCard = ( id_card) =>{
+        Axios.put("http://localhost:3010/api/updateContent", {
+            id_card: id_card,
+            content: document.getElementById('placeholder-input').value
+        }); 
+    };
+
+    const updateTitle = (id_card) =>{
+        Axios.put("http://localhost:3010/api/updateTitle", {
+            id_card: id_card,
+            title: document.getElementById('placeholder-input-title').value
+        });
+    };
+
+
+    
+
 
     return(
             <>
             <h2 id="por"></h2>
                 { taskList.map((value)=>{
-                /* {saveColor(value.color)} */
-                if(colorCard){ colorCard.style.backgroundColor = value.color;}
 
-                    return                    <div className="body-card" id="color-card"  >
-                    <h2 className="title-card" >{value.title}  </h2>
-                    <button className="btn-card" onClick={() =>{updateTitle(value.id_card)}}>Update</button>
+                
+                if(colorCard){ colorCard.style.backgroundColor = value.color;}
+                
+                return                    <div className="body-card" id="color-card"  >
+                    <form>
+                            <input type="text" className="title-card" id="placeholder-input-title" placeholder = {value.title}>
+                            </input>
+                            <button className="btn-card" id="btn-update" onClick={(e) =>{updateTitle(value.id_card)}}>Update</button>
+                        </form>
+
                     <hr className="border-card" ></hr>
                     <div className="content-card" >
+                 
+                        <form>
+                            <input type="text" id="placeholder-input" placeholder = {value.content}>
+                            </input>
+                            <button className="btn-card" onClick={(e) =>{updateCard(value.id_card)}}>Update</button>
+                        </form>
                         <form className="form-save" >
-                            <p>{value.content}</p>
                             {upTo ? <button className="btn-card" id="btn-to-doing" onClick={() =>{changeState(value.id_card, upTo)}}>{upTo}</button> : null}
                             <button className="btn-card" onClick={() =>{deleteCard(value.id_card)}}>Remove</button>
-                            
-                            <button className="btn-card" onClick={() =>{updateCard(value.id_card)}}>Update</button>
+                                
                         </form>
                     </div>
                 </div>
