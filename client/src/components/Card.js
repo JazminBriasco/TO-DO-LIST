@@ -44,23 +44,23 @@ const Card = ({mainTitle, upTo}) => {
     })};
 
     const updateCard = ( id_card) =>{
-        if(document.getElementById('placeholder-input').value){
+/*         if(document.getElementById('placeholder-input').value){ */
             Axios.put("http://localhost:3010/api/updateContent", {
                 id_card: id_card,
                 content: document.getElementById('placeholder-input').value
             }); 
-        window.location.reload(); 
-        }
+    /*     window.location.reload(); 
+        } */
     };
 
     const updateTitle = (id_card) =>{
-        if(document.getElementById('placeholder-input-title').value){
+       /*  if(document.getElementById('placeholder-input-title').value){ */
         Axios.put("http://localhost:3010/api/updateTitle", {
             id_card: id_card,
             title: document.getElementById('placeholder-input-title').value
         });
-        window.location.reload(); 
-        }
+      /*   window.location.reload(); 
+        } */
     };
 
 
